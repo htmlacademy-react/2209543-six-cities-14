@@ -1,4 +1,4 @@
-import CardOffer from '../../components/card-offers/card';
+import ListOffers from '../../components/list-offers/list-offers';
 import useDocumentTitle from '../../hooks/document-title/document-title';
 import type {Offers} from '../../mock/offers/offer-mocks';
 
@@ -103,7 +103,7 @@ function MainPages ({CountOffers: countOffers, Title: title, Offers: offers}: Ma
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                {Array.from({length: countOffers}, (_, index: number) => <CardOffer key = {index} Offers = {offers}/>)};
+                <ListOffers Offers = {offers}/>
               </div>
             </section>
             <div className="cities__right-section">
