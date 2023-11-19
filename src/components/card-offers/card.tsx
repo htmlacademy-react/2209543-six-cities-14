@@ -1,5 +1,13 @@
-function CardOffer () : JSX.Element{
+import type {Offers} from '../../mock/offers/offer-mocks';
 
+type CardPagesProps = {
+  Offers: Offers;
+}
+
+
+function CardOffer ({Offers: offers}: CardPagesProps) : JSX.Element{
+
+console.log(offers);
   return(
     <article className="cities__card place-card">
       <div className="cities__image-wrapper place-card__image-wrapper">
