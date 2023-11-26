@@ -1,36 +1,22 @@
-import {Link} from 'react-router-dom';
-import {useState} from 'react';
 import type {Offer} from '../../mock/offers/offer-mocks';
-import { AppRoute } from '../../const';
 
-type CardPagesProps = {
+type FavoriteOfferProps = {
   offer: Offer;
 }
 
+function FavoriteCardOffer ({offer: offer}: FavoriteOfferProps): JSX.Element {
 
-function CardOffer ({offer: offer}: CardPagesProps) : JSX.Element{
+  return (
+    <article className="favorites__card place-card">
 
-  const [cardState, setCardState] = useState({
-    offerId: ''
-  });
+      {(offer.isPremium) ? <div className="place-card__mark"><span>Premium</span> </div> : '' }
 
-  function onGetIdCard () {
-    setCardState({
-      ...cardState,
-      offerId: offer.id,
-    });
-  }
-
-  function onChangePage () {
-}
-  return(
-    <article className="cities__card place-card" onMouseOver = {onGetIdCard} onClick = {onChangePage}>
-      <div className="cities__image-wrapper place-card__image-wrapper">
-        <Link to={`${AppRoute.Offer}/:${offer.id}`} >
-          <img className="place-card__image" src= {offer.previewImage} width="260" height="200" alt="Place image"/>
-        </Link>
+      <div className="favorites__image-wrapper place-card__image-wrapper">
+        <a href="#">
+          <img className="place-card__image" src={offer.previewImage} width="150" height="110" alt="Place image"/>
+        </a>
       </div>
-      <div className="place-card__info">
+      <div className="favorites__card-info place-card__info">
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
             <b className="place-card__price-value">&euro;{offer.price}</b>
@@ -45,7 +31,7 @@ function CardOffer ({offer: offer}: CardPagesProps) : JSX.Element{
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{ width: (offer.rating / 5) * 100 }}></span>
+            <span style={{width: (offer.rating / 5) * 100}}></span>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
@@ -58,4 +44,4 @@ function CardOffer ({offer: offer}: CardPagesProps) : JSX.Element{
   );
 }
 
-export default CardOffer;
+export default FavoriteCardOffer;

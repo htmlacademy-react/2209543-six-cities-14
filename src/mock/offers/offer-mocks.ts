@@ -125,7 +125,7 @@ const offersMock: Offers = [
     ],
     title: 'House in countryside',
     isFavorite: true,
-    isPremium: false,
+    isPremium: true,
     rating: 2.8,
     type: 'room',
     bedrooms: 1,
@@ -293,7 +293,7 @@ const offersMock: Offers = [
       'https://14.react.pages.academy/static/offer/1.jpg'
     ],
     title: 'The house among olive',
-    isFavorite: false,
+    isFavorite: true,
     isPremium: false,
     rating: 4.4,
     type: 'house',
@@ -326,4 +326,4 @@ const offersMock: Offers = [
 ];
 
 export {offersMock};
-export type {Offers};
+export type {Offers, Offer};
