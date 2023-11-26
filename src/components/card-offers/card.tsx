@@ -21,6 +21,7 @@ function CardOffer ({offer: offer}: CardPagesProps) : JSX.Element{
     });
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
   function onChangePage () {
   }
 
