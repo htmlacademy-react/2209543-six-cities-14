@@ -22,7 +22,8 @@ function CardOffer ({offer: offer}: CardPagesProps) : JSX.Element{
   }
 
   function onChangePage () {
-}
+  }
+
   return(
     <article className="cities__card place-card" onMouseOver = {onGetIdCard} onClick = {onChangePage}>
       <div className="cities__image-wrapper place-card__image-wrapper">

@@ -13,9 +13,9 @@ function OfferPage ({title: title, offers: offers} : OfferPagesProps) : JSX.Elem
   const idOffer = location.pathname.replace('/offer/', '');
   const offerToRender = offers.find((offer) => offer.id === idOffer);
 
+
   useDocumentTitle(title);
 
-  console.log(idOffer);
 
   return(
     <div className="page">
