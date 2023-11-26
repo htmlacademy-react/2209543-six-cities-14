@@ -1,10 +1,16 @@
-import CardOffer from '../../components/card-offers/card';
+import ListOffers from '../../components/list-offers/list-offers';
+import useDocumentTitle from '../../hooks/document-title/document-title';
+import type {Offers} from '../../mock/offers/offer-mocks';
 
 type MainPagesProps = {
   CountOffers: number;
+  title: string;
+  offers: Offers;
 }
 
-function MainPages ({CountOffers: countOffers}: MainPagesProps): JSX.Element {
+function MainPages ({CountOffers: countOffers, title: title, offers: offers}: MainPagesProps): JSX.Element {
+
+  useDocumentTitle(title);
 
   return (
 
@@ -97,7 +103,7 @@ function MainPages ({CountOffers: countOffers}: MainPagesProps): JSX.Element {
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                {Array.from({length: countOffers}, (_, index: number) => <CardOffer key = {index}/>)};
+                <ListOffers offers = {offers}/>
               </div>
             </section>
             <div className="cities__right-section">

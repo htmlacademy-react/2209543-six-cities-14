@@ -5,43 +5,47 @@ import FavoritesPage from '../../Pages/favorites-page/favorites-page';
 import OfferPage from '../../Pages/offer-page/offer-page';
 import ErrorMessage from '../error-message/error-message';
 import PrivateRoute from '../private-route/private-route';
-import {AppRoute, AuthorizationStatus} from '../../const';
+import {AppRoute, AuthorizationStatus, TitleDescription} from '../../const';
+import type {Offers} from '../../mock/offers/offer-mocks';
 
 type AppOfferProps = {
   CountOffers: number;
+  offerProps: Offers;
 }
 
-function App({CountOffers: countOffers}: AppOfferProps): JSX.Element {
+
+function App({CountOffers: countOffers, offerProps: offers}: AppOfferProps,): JSX.Element {
+
   return (
     <BrowserRouter>
       <Routes>
         <Route
           path={AppRoute.Main}
-          element ={<MainPages CountOffers = {countOffers}/>}
+          element ={<MainPages CountOffers = {countOffers} title = {TitleDescription.MainPage} offers = {offers}/>}
         />
         <Route
           path={AppRoute.Login}
-          element ={<LoginPage/>}
+          element ={<LoginPage title = {TitleDescription.LoginPage}/>}
         />
         <Route
           path={AppRoute.Favorites}
           element ={
-            <PrivateRoute authorizationStatus = {AuthorizationStatus.NoAuth}>
-              <FavoritesPage/>
+            <PrivateRoute authorizationStatus = {AuthorizationStatus.Auth}>
+              <FavoritesPage title={TitleDescription.FavoritePage} offers = {offers}/>
             </PrivateRoute>
           }
         />
         <Route
-          path={AppRoute.Offer}
-          element ={<OfferPage/>}
+          path={`${AppRoute.Offer}/:offerId`}
+          element ={<OfferPage title = {TitleDescription.OfferPage} offers = {offers}/>}
         />
         <Route
           path={AppRoute.Error}
-          element ={<ErrorMessage/>}
+          element ={<ErrorMessage title = {TitleDescription.ErrorPage}/>}
         />
         <Route
           path="*"
-          element={<ErrorMessage/>}
+          element={<ErrorMessage title = {TitleDescription.ErrorPage}/>}
         />
       </Routes>
     </BrowserRouter>
